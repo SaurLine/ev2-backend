@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Peliculas de terror{% endblock %}
+{% block content %}
+<div class="btn-group" role="group">
+  <a href="{% url 'home:peliculas_accion' %}" class="btn btn-outline-danger">Peliculas de accion</a>
+  <a href="{% url 'home:peliculas_terror' %}" class="btn btn-secondary">Peliculas de terror</a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Año</th>
+      <th scope="col">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pelicula %}
+    <tr>
+      <td>{{p.nombre}}</td>
+      <td>{{p.año}}</td>
+      <td><img src="{% static p.imagen %}" alt="" width="200px" height="200px"></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
